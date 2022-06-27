@@ -3,12 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.tenpearls.testcases.SignupTestCases">
+      <class name="com.tenpearls.testcases.AddToCartEditDeleteTestCases">
         <methods>
-          <include name="invalidInputs"/>
           <include name="setUp"/>
+          <include name="invalidInputs"/>
+          <include name="tearDown"/>
+          <include name="verifyPageTitle"/>
         </methods>
-      </class> <!-- com.tenpearls.testcases.SignupTestCases -->
+      </class> <!-- com.tenpearls.testcases.AddToCartEditDeleteTestCases -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
