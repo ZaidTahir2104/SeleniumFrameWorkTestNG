@@ -35,7 +35,7 @@ public class HomeTestCases extends TestBase {
   }
   @Test(priority = 2)
   @Severity(SeverityLevel.MINOR)
-  public void signUpPage() throws IOException{
+  public void signUpPage() throws IOException, InterruptedException{
       homepage.SignupPage();
 
   }

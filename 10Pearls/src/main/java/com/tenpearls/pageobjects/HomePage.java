@@ -22,16 +22,17 @@ public class HomePage extends TestBase {
 	private  XSSFWorkbook workbook;
 	private XSSFSheet sheet;
 	private XSSFCell cell ;
-	int i = new Random().nextInt(10000);
+	int i = new Random().nextInt(9999);
+	int j = new Random().nextInt(999)+9000;
 	@FindBy(css = "a[title='Log in to your customer account']")
 	WebElement signinOption;
 	@FindBy(css = "#email_create")
 	WebElement email_create;
 	@FindBy(css = "button[id='SubmitCreate'] span")
 	WebElement creatAccount;
-	@FindBy(xpath = "//li[contains(text(),'An account using this email address has already be')]")
+	@FindBy(css = "div[id='create_account_error']")
 	WebElement alreadyAccount;
-	
+
 	public HomePage() {
 		//super();
 		PageFactory.initElements(driver, this);
@@ -43,7 +44,7 @@ public class HomePage extends TestBase {
 	public void verifyTitle() {
 		Assert.assertEquals(driver.getTitle(), "My Store");  
 	}
-	public Signup SignupPage() throws IOException {
+	public Signup SignupPage() throws IOException, InterruptedException {
 
 
 
@@ -56,6 +57,17 @@ public class HomePage extends TestBase {
 		System.out.print("sheet size is "+sheet.getLastRowNum());
 		email_create.sendKeys(sheet.getRow(i).getCell(0).getStringCellValue());
 		creatAccount.click();
+		Thread.sleep(5000);
+		try {
+			if(alreadyAccount.isDisplayed()) {
+
+				System.out.println("User is already exist "+alreadyAccount.getText());
+				email_create.clear();
+				email_create.sendKeys(sheet.getRow(j).getCell(0).getStringCellValue());
+				creatAccount.click();
+			}}
+		catch (Exception e) {
+		}
 		return new Signup();
 
 	}

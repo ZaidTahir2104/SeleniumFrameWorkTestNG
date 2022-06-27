@@ -28,7 +28,7 @@ public class AddToCartEditDeleteTestCases extends TestBase {
     }
 
     @BeforeTest
-    public void setUp() throws IOException {
+    public void setUp() throws IOException, InterruptedException {
         initialization();
         cart = new AddToCartEditDelete();
         signup = new Signup();

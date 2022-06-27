@@ -24,7 +24,7 @@ public class SignupTestCases extends TestBase {
     }
 
     @BeforeTest
-    public void setUp() throws IOException {
+    public void setUp() throws IOException, InterruptedException {
         initialization();
         signup = new Signup();
         homepage = new HomePage();
