@@ -52,6 +52,24 @@ public class Signup extends TestBase {
 	@FindBy(css = "button[id='submitAccount'] span")
 	WebElement register;
 
+	@FindBy(xpath = "//li[normalize-space()='You must register at least one phone number.']")
+	WebElement phonenumberrequired;
+	@FindBy(xpath = "//b[normalize-space()='lastname']")
+	WebElement lnamerequired;
+	@FindBy(xpath = "//b[normalize-space()='firstname']")
+	WebElement fnamerequired;
+	@FindBy(xpath = "//b[normalize-space()='passwd']")
+	WebElement passwdrequired;
+	@FindBy(xpath = ".//*[text()[contains(.,\"The Zip/Postal code you've entered is invalid. It must follow this format: 00000\")]]")
+	WebElement zipcoderequired;
+	@FindBy(xpath = "//li[normalize-space()='This country requires you to choose a State.']")
+	WebElement staterequired;
+	@FindBy(xpath = "//b[normalize-space()='city']")
+	WebElement cityrequired;
+	@FindBy(css = "//b[normalize-space()='address1']")
+	WebElement address1required;
+	
+	
 
 	public Signup() {
 		super();
@@ -64,7 +82,16 @@ public class Signup extends TestBase {
 		Assert.assertEquals(driver.getTitle(), "Login - My Store"); 
 	}
 	//Redirect to Login/Signup Page 
-	public AddToCart signupDetail() throws IOException {
+	public AddToCartEditDelete signupDetail() throws IOException {
+		register.click();
+		isPresent(phonenumberrequired);
+		isPresent(lnamerequired);
+		isPresent(fnamerequired);
+		isPresent(passwdrequired);
+		isPresent(zipcoderequired);
+		isPresent(staterequired);
+		isPresent(cityrequired);
+		isPresent(address1required);
 		gender.click();
 		File file = new File(System.getProperty("user.dir")+"/src/main/java/com/tenpearls/utalities/TestData.xlsx");
 		FileInputStream fis = new FileInputStream(file);
@@ -87,7 +114,19 @@ public class Signup extends TestBase {
 		alias.clear();
 		alias.sendKeys(sheet.getRow(1).getCell(11).getStringCellValue());
 		register.click();
-		return new AddToCart();
+		return new AddToCartEditDelete();
+	}
+	public boolean isPresent(WebElement ele) {
+	    boolean flag = true;
+	    try {
+	        ele.isDisplayed();
+	        System.out.println("Required Fields is "+ele.getText());
+	        flag = true;
+	    }
+	    catch (Exception e) {
+	        flag = false;
+	    }
+	    return flag;
 	}
 }
 

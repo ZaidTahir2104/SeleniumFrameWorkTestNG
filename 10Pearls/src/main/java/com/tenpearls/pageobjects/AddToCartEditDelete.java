@@ -11,7 +11,7 @@ import org.testng.Assert;
 import com.tenpearls.setup.TestBase;
 import io.qameta.allure.Step;
 
-public class AddToCart extends TestBase {
+public class AddToCartEditDelete extends TestBase {
 	@FindBy(css = ".page-heading")
     WebElement pageHeading;
     @FindBy(css = "a[title='T-shirts']")
@@ -48,7 +48,7 @@ public class AddToCart extends TestBase {
     WebElement register;
     WebDriverWait wait=new WebDriverWait(driver,30);
     
-    public AddToCart() {
+    public AddToCartEditDelete() {
         super();
         PageFactory.initElements(driver, this);
 

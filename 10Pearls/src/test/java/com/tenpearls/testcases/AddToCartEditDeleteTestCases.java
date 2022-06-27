@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import com.tenpearls.listeners.AllureListener;
-import com.tenpearls.pageobjects.AddToCart;
+import com.tenpearls.pageobjects.AddToCartEditDelete;
 import com.tenpearls.pageobjects.HomePage;
 import com.tenpearls.pageobjects.Signup;
 import com.tenpearls.setup.TestBase;
@@ -16,21 +16,21 @@ import io.qameta.allure.SeverityLevel;
 
 
 @Listeners({AllureListener.class})
-public class AddToCartTestCases extends TestBase {
+public class AddToCartEditDeleteTestCases extends TestBase {
 
     HomePage homepage;
     Signup signup;
-    AddToCart cart;
+    AddToCartEditDelete cart;
 
 
-    public AddToCartTestCases(){
+    public AddToCartEditDeleteTestCases(){
         super();
     }
 
     @BeforeTest
     public void setUp() throws IOException {
         initialization();
-        cart = new AddToCart();
+        cart = new AddToCartEditDelete();
         signup = new Signup();
         homepage = new HomePage();
         signup = homepage.SignupPage();

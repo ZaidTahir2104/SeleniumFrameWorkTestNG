@@ -3,7 +3,7 @@
 <suite name="Suite" thread-count="1">
 	<listeners>
 		<listener
-			class-name="com.tenpearls.listeners.Listeners" />
+			class-name="com.tenpearls.listeners.AllureListener" />
 	</listeners>
 	<test thread-count="5" name="PersonRestApiTest">
 		<classes>

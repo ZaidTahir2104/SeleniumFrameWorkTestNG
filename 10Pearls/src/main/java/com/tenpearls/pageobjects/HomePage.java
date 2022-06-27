@@ -3,6 +3,8 @@ package com.tenpearls.pageobjects;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Random;
+
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -20,7 +22,7 @@ public class HomePage extends TestBase {
 	private  XSSFWorkbook workbook;
 	private XSSFSheet sheet;
 	private XSSFCell cell ;
-
+	int i = new Random().nextInt(10000);
 	@FindBy(css = "a[title='Log in to your customer account']")
 	WebElement signinOption;
 	@FindBy(css = "#email_create")
@@ -52,13 +54,8 @@ public class HomePage extends TestBase {
 		workbook = new XSSFWorkbook(fis);
 		sheet = workbook.getSheetAt(0);
 		System.out.print("sheet size is "+sheet.getLastRowNum());
-		for (int i=1;i<=sheet.getLastRowNum();i++) {
-			cell = sheet.getRow(i).getCell(i-1);
-			String email = cell.getStringCellValue();
-			System.out.print("email is"+email);
-			email_create.sendKeys(email);
-			creatAccount.click();
-		}
+		email_create.sendKeys(sheet.getRow(i).getCell(0).getStringCellValue());
+		creatAccount.click();
 		return new Signup();
 
 	}
